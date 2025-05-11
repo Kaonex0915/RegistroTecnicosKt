@@ -60,6 +60,7 @@ dependencies {
 
 
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.lifecycle.runtime.compose.android)
 
     ksp(libs.androidx.room.compiler)
 
