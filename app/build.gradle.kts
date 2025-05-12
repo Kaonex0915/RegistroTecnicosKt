@@ -1,10 +1,9 @@
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.room")
     id("com.google.devtools.ksp")
-   // id("com.google.dagger.hilt.android")
+    // id("com.google.dagger.hilt.android")
     id("org.jetbrains.kotlin.plugin.compose")
     alias(libs.plugins.kotlin.serialization)
     id("com.google.dagger.hilt.android")
@@ -23,9 +22,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
     room {
         schemaDirectory("$projectDir/schemas")
     }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -58,7 +59,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.lifecycle.runtime.compose.android)
 
@@ -77,15 +77,12 @@ dependencies {
 
     //room
     implementation("androidx.room:room-runtime:2.6.1")
-    annotationProcessor("androidx.room:room-compiler:2.6.1")
-    //ksp("androidx.room:room-compiler:2.6.1")
-    //  optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
 
     //Hilt
     implementation("com.google.dagger:hilt-android:2.51")
-    ksp("com.google.dagger:hilt-compiler:2.51") // Use the appropriate Hilt version
-    //ksp("com.google.dagger:hilt-android-compiler:2.51")
+    ksp("com.google.dagger:hilt-compiler:2.51")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     //retrofit
@@ -96,11 +93,9 @@ dependencies {
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-
 }
-
